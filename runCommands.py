@@ -22,7 +22,7 @@ def doClean():
 
 #setting up the image size, bin, NSAMP and exposure values
 def main(argv):
-    os.system('source VO_init_LTA.sh')
+    os.system('source VOpt_init_LTA.sh')
     if len(argv)>1:
         pathName=argv[1]
     else:
