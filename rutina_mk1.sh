@@ -12,7 +12,7 @@ setupIMG(){
 }
 
 doClean(){
-    lta name $imgFOLDER/skp_mod9_wfr13_NSAMP1_NROW700_NCOL20_EXPOSURE_0_cleanimg
+    lta name $imgFOLDER/skp_mod9_wfr13_NSAMP1_NROW700_NCOL20_EXPOSURE_0_cleanimg_
     lta read
     echo "clean image done!"
 }
@@ -30,16 +30,17 @@ else
     pathFiles=$1 #save the argument as /path/of/files
 fi
 
+setupIMG()
+doClean()
+lta name $imgFOLDER/skp_mod9_wfr13_NSAMP1_NROW700_NCOL20_EXPOSURE_0_img_
+
 for file in $pathFiles*
 do
     source $file
-    lta name $imgFOLDER/skp_mod9_wfr13_NSAMP1_NROW700_NCOL20_EXPOSURE_0_img
     lta read
     echo "image done at :" $(date)
 
 done
-
-#setupIMG()
 
 
 
