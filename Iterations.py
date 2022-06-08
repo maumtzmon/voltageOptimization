@@ -5,7 +5,7 @@ import pandas as pd
 
 from ltaTools import setupVoltages, readoutVoltages
 
-dic, dic_Bias= readoutVoltages("voltageFiles/voltages_skp_lta_v2.sh")
+dic, dic_Bias= readoutVoltages("V123/voltage_skp_lta_v1_microchip.sh")
 
 def Iteraciones(hh, hl, dh, dl): #This function dependes on the voltages given by h high, h low, d high and d low.
     

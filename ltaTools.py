@@ -26,8 +26,8 @@ def readoutVoltages(archivoVoltajes):
 
 #Generates a file from template with new values
 def setupVoltages(dic_Voltages, dic_Bias, newName='test_V.sh'):  #Needs 2 dictionaries with voltages values
-    with open('voltageFiles/voltage_ICN_test_.sh','r') as template,\
-         open('voltageFiles/'+newName,'w') as newFile:              
+    with open('V123/voltage_ICN_test_.sh','r') as template,\
+         open('V123/'+newName,'w') as newFile:              
         for linea in template:
             if '=' in linea:
                 if linea.split('=')[0][0] in dic_Voltages:
@@ -36,8 +36,8 @@ def setupVoltages(dic_Voltages, dic_Bias, newName='test_V.sh'):  #Needs 2 dictio
                     elif linea.split('=')[0][1]=='l':
                         newFile.write(linea.split('\n')[0]+str(dic_Voltages[linea.split('=')[0][0]][1])+'\n')
 
-            elif 'vdrain ' in linea or 'vdd ' in linea or 'vr ' in linea or 'vsub ' in linea:
-                newFile.write(linea.split('#')[0].split('\t'or '\n')[0] + str(dic_Bias[linea.split('#')[0].split('\t'or'\n')[0].split(' ')[-2]])+'\n')
+            elif 'vdrain\n' in linea or 'vdd\n' in linea or 'vr\n' in linea or 'vsub\n' in linea:
+                newFile.write(linea.split('#')[0].split('\n')[0] + ' '+str(dic_Bias[linea.split('#')[0].split('\n')[0].split(' ')[-1]])+'\n')
             else:
                 newFile.write(linea)
         newFile.close()
@@ -73,6 +73,6 @@ def newVals(template='file.sh', var4change='empty', limit_h=[1,-1],limit_l=[0,-2
 
 
 
-dic_Voltages, dic_Bias=readoutVoltages('voltageFiles/voltage_skp_lta_v1_microchip.sh')
+#dic_Voltages, dic_Bias=readoutVoltages('V123/voltage_skp_lta_v1_microchip.sh')
 
-setupVoltages(dic_Voltages, dic_Bias, newName='voltage_ICN_test_01.sh')
+#setupVoltages(dic_Voltages, dic_Bias, newName='voltage_ICN_test_01.sh')
